@@ -1,0 +1,32 @@
+doctype html
+html
+head
+  title My Devise
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+body
+  =render 'layouts/navigation'
+  .container
+    -flash.each do |type, value|
+      .alert class=(alert_class_for(type))
+        =value
+    =yield
+
+/ <!DOCTYPE html>
+/ <html>
+/ <head>
+/   <title>MyDevise</title>
+/   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+/   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+/   <%= csrf_meta_tags %>
+/ </head>
+/ <body>
+/   <%= render 'layouts/navigation' %>
+/   <div class='container'>
+/     <div class="alert alert-danger"><%= flash[:error] %></div>
+/     <%= yield %>
+/   </div>
+/ 
+/ </body>
+/ </html>
