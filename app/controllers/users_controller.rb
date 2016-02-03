@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user, except: [:new]
+  before_filter :authenticate_user, except: [:new, :index]
   def new
     @user = User.new
   end
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, flash: { success: "User saved successfully!!" }
+      redirect_to @user, flash: { success: 'User saved successfully!!' }
     else
       flash[:error] = 'Error'
       render 'new'
@@ -16,6 +16,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def index
   end
 
   private

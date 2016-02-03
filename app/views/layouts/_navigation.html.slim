@@ -1,6 +1,5 @@
 nav.navbar.navbar-default role="navigation" 
   .container-fluid
-    /! Brand and toggle get grouped for better mobile display
     .navbar-header
       button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
         span.sr-only Toggle navigation
@@ -8,12 +7,11 @@ nav.navbar.navbar-default role="navigation"
         span.icon-bar
         span.icon-bar
       =link_to 'My Devise', root_path, class: 'navbar-brand'
-    /! Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         -if user_signed_in
           li 
-            =link_to "Hello #{@user.username}", root_path
+            =link_to "Hello #{current_user.username}", root_path
           li 
             =link_to "Logout", root_path
         -else
@@ -21,5 +19,3 @@ nav.navbar.navbar-default role="navigation"
             =link_to 'Sign In', new_session_path
           li
             =link_to 'Sign Up', new_user_path
-    /! /.navbar-collapse
-  /! /.container-fluid
